@@ -14,10 +14,11 @@ ABAC Policy
 התחלה
  ```mermaid
 flowchart LR
-    A([Start]) --> B[Input logs and attributes\nObserved allow and deny requests\nParameters T and K]
-    B --> C[Mine frequent rules\nIdentify rules covering at least T requests\nFreqRules]
-    C --> D[Filter by reliability\nRemove over permissive rules\nRelRules]
-    D --> E[Minimality step\nKeep shortest equivalent rules\nShortRules]
+    A([Start]) --> B[Input logs and attributes<br/>Observed allow and deny requests<br/>Parameters T and K]
+    B --> C[Mine frequent rules<br/>Rules covering at least T requests<br/>FreqRules]
+    C --> D[Filter by reliability<br/>Remove over permissive rules<br/>RelRules]
+    D --> E[Minimality step<br/>Keep shortest equivalent rules<br/>ShortRules]
     E --> F([End])
+
 
 
