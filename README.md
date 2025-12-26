@@ -11,3 +11,13 @@ ABAC Policy
 | Metrics used | TPR, FPR (sometimes F1) | TPR, FPR, Precision, F1 |
 | Generalization quality | Limited | Strong |
 | Security awareness | Low | High |
+התחלה
+ ```mermaid
+flowchart LR
+    A([Start]) --> B[Input logs and attributes\nObserved allow and deny requests\nParameters T and K]
+    B --> C[Mine frequent rules\nIdentify rules covering at least T requests\nFreqRules]
+    C --> D[Filter by reliability\nRemove over permissive rules\nRelRules]
+    D --> E[Minimality step\nKeep shortest equivalent rules\nShortRules]
+    E --> F([End])
+
+
