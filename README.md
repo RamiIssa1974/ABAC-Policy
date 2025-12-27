@@ -40,4 +40,43 @@ flowchart TD
         G2 --> H2[Output: Optimized ABAC policy set + Conflict status]
     end
 ```
+## another detailed chart
+```mermaid
+flowchart TD
+    A[קלט: Access control logs + Attribute values] --> B[Data Preprocessing]
+    B --> B1[שילוב log + attributes → LABAC]
+    B --> B2[טיפול בערכים חסרים na]
+    B --> B3[String splicing → יצירת attribute strings]
+
+    B3 --> C[Matrix & nTreeClus Representation]
+    C --> C1[חלוקה לתת-מחרוזות]
+    C --> C2[בניית מטריצת תווים]
+    C --> C3[Random Forest → leaf nodes]
+    C --> C4[יצירת וקטורים שמייצגים security intent]
+
+    C4 --> D[Hierarchical Clustering]
+    D --> D1[חישוב cosine similarity בין וקטורים]
+    D --> D2[יצירת distance matrix]
+    D --> D3[Ward SSE → tree of clusters]
+    D --> D4[חלוקה ל-k clusters]
+
+    D4 --> E[Parameter Tuning]
+    E --> E1[Segment length c]
+    E --> E2[Number of decision trees m]
+    E --> E3[Number of clusters k]
+    E --> E4[Threshold η]
+
+    E4 --> F[Policy Extraction]
+    F --> F1[Entity & inter-attribute relationships]
+    F --> F2[Operational attribute relationships לפי threshold]
+    F --> F3[יצירת policy set π1]
+
+    F3 --> G[Policy Optimization]
+    G --> G1[Pruning: הסרת חוקים כפולים/מיותרים]
+    G --> G2[Refinement: תיקון חוקים לפי FN/FP]
+    G --> G3[Analysis: בדיקה מול מגבלות SMT → isConflict]
+
+    G3 --> H[Output: Optimized ABAC policy set π + Conflict status]
+
+```
 # Article 4 - Text for article 4
