@@ -79,4 +79,19 @@ flowchart TD
     G3 --> H[Output: Optimized ABAC policy set π + Conflict status]
 
 ```
-# Article 4 - Text for article 4
+# Article 6 - ABAC policy mining method for heterogeneous access control system
+
+```mermaid
+    graph RL
+    A[<b>חישוב אילוצים</b><br/>זיהוי קשרים בין<br/>מאפייני משתמש ומשאב] --> B[<b>אתחול מדיניות</b><br/>יצירת סט חוקים<br/>בסיסי ראשוני]
+    B --> C[<b>הכללת מדיניות</b><br/>שימוש ב-ACO למציאת<br/>הכללה אופטימלית]
+    C --> D[<b>אופטימיזציה</b><br/>מיזוג, פישוט וצמצום<br/>חוקים וכפילויות]
+    D --> E[<b>בחירת מדיניות</b><br/>בחירת החוקים עם<br/>ה-WSC הנמוך ביותר]
+
+    %% עיצוב ויזואלי %%
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bfb,stroke:#333,stroke-width:4px
+    style D fill:#fbb,stroke:#333,stroke-width:2px
+    style E fill:#fff,stroke:#333,stroke-width:2px
+```
