@@ -95,3 +95,42 @@ flowchart TD
     style D fill:#fbb,stroke:#333,stroke-width:2px
     style E fill:#fff,stroke:#333,stroke-width:2px
 ```
+# Article7-Automated Generation and Update of Structured ABAC Policies
+```mermaid
+ graph TD
+    %% מקור משותף או נקודת כניסה
+    Start((<b>תחילת התהליך</b>)) --> Choice{מהו הקלט?}
+
+    %% ענף יצירה
+    Choice -->|יומני גישה בלבד| Create[<b>מסלול יצירה Mining</b>]
+    
+    subgraph AlgorithmFrame [<b>אלגוריתם יצירה ועדכון מדיניות C-ABAC</b>]
+        
+        direction TB
+        
+        %% שלבי היצירה
+        Create --> C1[זיהוי הקשרים: TF-IDF]
+        C1 --> C2[קיבוץ לקטגוריות: Doc2vec]
+        C2 --> C3[דיוק וכריית חוקים: FP-growth]
+        
+        %% ענף עדכון
+        Choice -->|מדיניות קיימת + יומנים| Update[<b>מסלול עדכון Update</b>]
+        Update --> U1[המרה למבנה קטגוריות]
+        U1 --> U2[הזרקת נתונים וזיהוי סתירות]
+        U2 --> U3[תיקון: פיצול/מיזוג קטגוריות]
+        
+        %% איחוד לתוצאה סופית
+        C3 --> Final[<b>מדיניות C-ABAC מובנית ומאוחדת</b>]
+        U3 --> Final
+    end
+
+    %% סיום
+    Final --> End((<b>סיום</b>))
+
+    %% עיצוב
+    style AlgorithmFrame fill:#f5f5f5,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style Final fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style Start fill:#fff,stroke:#333
+    style Choice fill:#fff2cc,stroke:#d6b656
+```
+ד
