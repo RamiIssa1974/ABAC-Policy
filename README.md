@@ -133,4 +133,36 @@ flowchart TD
     style Start fill:#fff,stroke:#333
     style Choice fill:#fff2cc,stroke:#d6b656
 ```
+# Article  8 - Incremental Maintenance of ABAC Policies
+```mermaid
+graph TD
+    %% הגדרת כיוון כללי
+    subgraph PreProcessing [שלב 1: עיבוד מקדים - חד פעמי]
+        A[קבלת מטריצת UOP גולמית] --> B[זיהוי שורות עם הרשאה 1 ושורות עם 0]
+        B --> C[יצירת חוקי אפס - ZeroRules]
+        C --> D[חישוב מיפוי כיסוי - CoverageCalc]
+        D --> E[שמירת מבני נתונים של המיפוי - I]
+    end
+
+    E --> F{זיהוי שינוי במערכת}
+
+    subgraph ChangeHandling [שלב 2: טיפול בשינויים]
+        F -->|הוספת/מחיקת הרשאה| G[שינוי שורה ספציפית במטריצה]
+        F -->|הוספת/מחיקת תכונה| H[שינוי כל השורות של המשתמש/אובייקט]
+        
+        G --> I[מחיקת המידע הישן מהמיפויים]
+        H --> I
+        I --> J[עדכון המידע החדש במבני הנתונים]
+    end
+
+    subgraph RuleUpdate [שלב 3: עדכון חוקי המדיניות]
+        J --> K[הרצת ABAC-SRM רק על החלק שהשתנה]
+        K --> L[הפקת סט חוקי ABAC מעודכן - Π]
+    end
+
+    %% עיצוב ויזואלי
+    style PreProcessing fill:#f9f,stroke:#333,stroke-width:2px
+    style ChangeHandling fill:#bbf,stroke:#333,stroke-width:2px
+    style RuleUpdate fill:#bfb,stroke:#333,stroke-width:2px
+
 ד
